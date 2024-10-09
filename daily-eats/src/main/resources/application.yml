@@ -1,0 +1,5 @@
+spring:
+  application:
+    name: daily-eats
+  profiles:
+    active: dev
