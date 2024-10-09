@@ -1,9 +1,13 @@
 server:
   port: 8001
-
+# DataSource Config
 spring:
   datasource:
     url: jdbc:mysql://localhost:3306/daily_eats_dev?useSSL=false&serverTimezone=UTC
+    driver-class-name: com.mysql.cj.jdbc.Driver
     username: daily_eats
     password: 123456
-    driver-class-name: com.mysql.cj.jdbc.Driver
+  #sql:
+  #  init:
+  #    schema-locations: classpath:db/schema-h2.sql
+  #    data-locations: classpath:db/data-h2.sql
