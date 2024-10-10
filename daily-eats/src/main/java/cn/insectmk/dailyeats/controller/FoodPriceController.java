@@ -1,6 +1,7 @@
 package cn.insectmk.dailyeats.controller;
 
 
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import org.springframework.web.bind.annotation.RestController;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping("/food-price")
+@Tag(name = "食材价格")
 public class FoodPriceController {
 
 }

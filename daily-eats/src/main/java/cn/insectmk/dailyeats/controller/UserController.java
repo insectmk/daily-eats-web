@@ -2,7 +2,9 @@ package cn.insectmk.dailyeats.controller;
 
 import cn.insectmk.dailyeats.common.Result;
 import cn.insectmk.dailyeats.service.IUserService;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -16,11 +18,16 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping("/user")
+@Tag(name = "用户")
 public class UserController {
     @Autowired
     private IUserService userService;
 
-    @RequestMapping("/getUser")
+    /**
+     * 获取所有用户信息
+     * @return
+     */
+    @GetMapping("/getAll")
     public Result<?> getUser(){
         return Result.success(userService.list());
     }

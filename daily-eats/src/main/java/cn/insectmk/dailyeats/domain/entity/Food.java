@@ -1,14 +1,13 @@
 package cn.insectmk.dailyeats.domain.entity;
 
-import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
-import java.io.Serializable;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import com.baomidou.mybatisplus.annotation.TableName;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
+import java.io.Serializable;
 
 /**
  * <p>
@@ -22,25 +21,25 @@ import lombok.experimental.Accessors;
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
 @TableName("t_food")
-@ApiModel(value="TFood对象", description="食材表，储存原料信息")
+@Schema(name="Food对象", description="食材表，储存原料信息")
 public class Food implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    @ApiModelProperty(value = "主键")
+    @Schema(name = "主键")
     @TableId(value = "id", type = IdType.AUTO)
     private String id;
 
-    @ApiModelProperty(value = "名称")
+    @Schema(name = "名称")
     private String name;
 
-    @ApiModelProperty(value = "分类")
+    @Schema(name = "分类")
     private String type;
 
-    @ApiModelProperty(value = "单位")
+    @Schema(name = "单位")
     private String unit;
 
-    @ApiModelProperty(value = "备注")
+    @Schema(name = "备注")
     private String memo;
 
 

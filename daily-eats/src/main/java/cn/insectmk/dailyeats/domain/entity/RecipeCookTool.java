@@ -1,14 +1,13 @@
 package cn.insectmk.dailyeats.domain.entity;
 
-import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
-import java.io.Serializable;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import com.baomidou.mybatisplus.annotation.TableName;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
+import java.io.Serializable;
 
 /**
  * <p>
@@ -22,22 +21,22 @@ import lombok.experimental.Accessors;
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
 @TableName("t_recipe_cook_tool")
-@ApiModel(value="TRecipeCookTool对象", description="菜谱烹饪工具表，储存菜谱烹饪工具信息")
+@Schema(name="RecipeCookTool对象", description="菜谱烹饪工具表，储存菜谱烹饪工具信息")
 public class RecipeCookTool implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    @ApiModelProperty(value = "主键")
+    @Schema(name = "主键")
     @TableId(value = "id", type = IdType.AUTO)
     private String id;
 
-    @ApiModelProperty(value = "名称")
+    @Schema(name = "名称")
     private String name;
 
-    @ApiModelProperty(value = "类型")
+    @Schema(name = "类型")
     private String type;
 
-    @ApiModelProperty(value = "备注")
+    @Schema(name = "备注")
     private String memo;
 
 
