@@ -1,9 +1,7 @@
-package cn.insectmk.dailyeats.entity;
+package cn.insectmk.dailyeats.domain.entity;
 
-import java.math.BigDecimal;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.annotation.IdType;
-import java.time.LocalDateTime;
 import com.baomidou.mybatisplus.annotation.TableId;
 import java.io.Serializable;
 import io.swagger.annotations.ApiModel;
@@ -14,7 +12,7 @@ import lombok.experimental.Accessors;
 
 /**
  * <p>
- * 食材价格表，储存价格信息
+ * 用户菜谱标签表，储存用户菜谱标签
  * </p>
  *
  * @author makun
@@ -23,9 +21,9 @@ import lombok.experimental.Accessors;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
-@TableName("t_food_price")
-@ApiModel(value="TFoodPrice对象", description="食材价格表，储存价格信息")
-public class FoodPrice implements Serializable {
+@TableName("t_user_recipe_tag")
+@ApiModel(value="TUserRecipeTag对象", description="用户菜谱标签表，储存用户菜谱标签")
+public class UserRecipeTag implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -33,17 +31,14 @@ public class FoodPrice implements Serializable {
     @TableId(value = "id", type = IdType.AUTO)
     private String id;
 
-    @ApiModelProperty(value = "食材ID")
-    private String foodId;
+    @ApiModelProperty(value = "用户ID")
+    private String userId;
 
-    @ApiModelProperty(value = "单价")
-    private BigDecimal price;
+    @ApiModelProperty(value = "菜谱ID")
+    private String recipeId;
 
-    @ApiModelProperty(value = "备注")
-    private String memo;
-
-    @ApiModelProperty(value = "录入时间")
-    private LocalDateTime inputDate;
+    @ApiModelProperty(value = "名称")
+    private String name;
 
 
 }

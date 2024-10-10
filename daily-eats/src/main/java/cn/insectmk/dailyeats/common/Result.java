@@ -1,11 +1,8 @@
 package cn.insectmk.dailyeats.common;
 
-import cn.insectmk.dailyeats.entity.User;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import java.util.List;
 
 /**
  * @Description 统一返回类型

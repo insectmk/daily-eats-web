@@ -1,7 +1,8 @@
-package cn.insectmk.dailyeats.entity;
+package cn.insectmk.dailyeats.domain.entity;
 
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.annotation.IdType;
+import java.time.LocalDateTime;
 import com.baomidou.mybatisplus.annotation.TableId;
 import java.io.Serializable;
 import io.swagger.annotations.ApiModel;
@@ -12,7 +13,7 @@ import lombok.experimental.Accessors;
 
 /**
  * <p>
- * 食材表，储存原料信息
+ * 用户菜谱表，储存用户的菜谱信息
  * </p>
  *
  * @author makun
@@ -21,9 +22,9 @@ import lombok.experimental.Accessors;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
-@TableName("t_food")
-@ApiModel(value="TFood对象", description="食材表，储存原料信息")
-public class Food implements Serializable {
+@TableName("t_user_recipe")
+@ApiModel(value="TUserRecipe对象", description="用户菜谱表，储存用户的菜谱信息")
+public class UserRecipe implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -31,17 +32,20 @@ public class Food implements Serializable {
     @TableId(value = "id", type = IdType.AUTO)
     private String id;
 
-    @ApiModelProperty(value = "名称")
-    private String name;
+    @ApiModelProperty(value = "用户ID")
+    private String userId;
 
-    @ApiModelProperty(value = "分类")
-    private String type;
-
-    @ApiModelProperty(value = "单位")
-    private String unit;
+    @ApiModelProperty(value = "菜谱ID")
+    private String recipeId;
 
     @ApiModelProperty(value = "备注")
     private String memo;
+
+    @ApiModelProperty(value = "排序")
+    private Integer sort;
+
+    @ApiModelProperty(value = "录入时间")
+    private LocalDateTime inputDate;
 
 
 }

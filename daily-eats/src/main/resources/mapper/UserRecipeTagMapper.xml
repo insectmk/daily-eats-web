@@ -3,7 +3,7 @@
 <mapper namespace="cn.insectmk.dailyeats.mapper.UserRecipeTagMapper">
 
     <!-- 通用查询映射结果 -->
-    <resultMap id="BaseResultMap" type="cn.insectmk.dailyeats.entity.UserRecipeTag">
+    <resultMap id="BaseResultMap" type="cn.insectmk.dailyeats.domain.entity.UserRecipeTag">
         <id column="id" property="id" />
         <result column="user_id" property="userId" />
         <result column="recipe_id" property="recipeId" />

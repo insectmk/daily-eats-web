@@ -1,6 +1,6 @@
 package cn.insectmk.dailyeats.service.impl;
 
-import cn.insectmk.dailyeats.entity.RecipeCookTool;
+import cn.insectmk.dailyeats.domain.entity.RecipeCookTool;
 import cn.insectmk.dailyeats.mapper.RecipeCookToolMapper;
 import cn.insectmk.dailyeats.service.IRecipeCookToolService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;

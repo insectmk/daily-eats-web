@@ -1,6 +1,6 @@
 package cn.insectmk.dailyeats.service.impl;
 
-import cn.insectmk.dailyeats.entity.UserRecipeTag;
+import cn.insectmk.dailyeats.domain.entity.UserRecipeTag;
 import cn.insectmk.dailyeats.mapper.UserRecipeTagMapper;
 import cn.insectmk.dailyeats.service.IUserRecipeTagService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;

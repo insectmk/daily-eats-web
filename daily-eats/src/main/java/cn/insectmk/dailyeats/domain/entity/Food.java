@@ -1,4 +1,4 @@
-package cn.insectmk.dailyeats.entity;
+package cn.insectmk.dailyeats.domain.entity;
 
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.annotation.IdType;
@@ -12,7 +12,7 @@ import lombok.experimental.Accessors;
 
 /**
  * <p>
- * 菜谱食材表，储存菜谱的食材信息
+ * 食材表，储存原料信息
  * </p>
  *
  * @author makun
@@ -21,9 +21,9 @@ import lombok.experimental.Accessors;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
-@TableName("t_recipe_food")
-@ApiModel(value="TRecipeFood对象", description="菜谱食材表，储存菜谱的食材信息")
-public class RecipeFood implements Serializable {
+@TableName("t_food")
+@ApiModel(value="TFood对象", description="食材表，储存原料信息")
+public class Food implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -31,14 +31,14 @@ public class RecipeFood implements Serializable {
     @TableId(value = "id", type = IdType.AUTO)
     private String id;
 
-    @ApiModelProperty(value = "菜谱ID")
-    private String recipeId;
+    @ApiModelProperty(value = "名称")
+    private String name;
 
-    @ApiModelProperty(value = "食材ID")
-    private String foodId;
+    @ApiModelProperty(value = "分类")
+    private String type;
 
-    @ApiModelProperty(value = "量")
-    private Float amount;
+    @ApiModelProperty(value = "单位")
+    private String unit;
 
     @ApiModelProperty(value = "备注")
     private String memo;

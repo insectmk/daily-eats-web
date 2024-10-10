@@ -1,8 +1,7 @@
-package cn.insectmk.dailyeats.entity;
+package cn.insectmk.dailyeats.domain.entity;
 
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.annotation.IdType;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import com.baomidou.mybatisplus.annotation.TableId;
 import java.io.Serializable;
@@ -14,7 +13,7 @@ import lombok.experimental.Accessors;
 
 /**
  * <p>
- * 用户表，储存用户信息
+ * 菜谱表，储存菜谱信息
  * </p>
  *
  * @author makun
@@ -23,9 +22,9 @@ import lombok.experimental.Accessors;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
-@TableName("t_user")
-@ApiModel(value="TUser对象", description="用户表，储存用户信息")
-public class User implements Serializable {
+@TableName("t_recipe")
+@ApiModel(value="TRecipe对象", description="菜谱表，储存菜谱信息")
+public class Recipe implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -33,29 +32,32 @@ public class User implements Serializable {
     @TableId(value = "id", type = IdType.AUTO)
     private String id;
 
-    @ApiModelProperty(value = "昵称")
+    @ApiModelProperty(value = "名称")
     private String name;
 
-    @ApiModelProperty(value = "用户名")
-    private String username;
+    @ApiModelProperty(value = "简介")
+    private String desc;
 
-    @ApiModelProperty(value = "密码")
-    private String password;
+    @ApiModelProperty(value = "教程")
+    private String step;
 
-    @ApiModelProperty(value = "头像")
-    private String head;
+    @ApiModelProperty(value = "菜谱类型")
+    private String recipeType;
 
-    @ApiModelProperty(value = "出生年月日")
-    private LocalDate birthday;
+    @ApiModelProperty(value = "几人份")
+    private Integer numPeople;
 
-    @ApiModelProperty(value = "身高")
-    private Float height;
+    @ApiModelProperty(value = "热量")
+    private Integer calories;
 
-    @ApiModelProperty(value = "体重")
-    private Float weight;
+    @ApiModelProperty(value = "烹饪难度")
+    private Integer level;
 
-    @ApiModelProperty(value = "性别")
-    private String gender;
+    @ApiModelProperty(value = "排序")
+    private Integer sort;
+
+    @ApiModelProperty(value = "是否公开")
+    private Boolean isPub;
 
     @ApiModelProperty(value = "录入时间")
     private LocalDateTime inputDate;

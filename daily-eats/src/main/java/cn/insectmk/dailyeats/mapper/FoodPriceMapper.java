@@ -1,6 +1,6 @@
 package cn.insectmk.dailyeats.mapper;
 
-import cn.insectmk.dailyeats.entity.FoodPrice;
+import cn.insectmk.dailyeats.domain.entity.FoodPrice;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 /**
