@@ -100,3 +100,22 @@ CREATE TABLE IF NOT EXISTS `t_recipe_cook_tool` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='菜谱烹饪工具表，储存菜谱烹饪工具信息';
 
+
+
+-- 为表添加 is_deleted 字段
+ALTER TABLE `t_user` ADD COLUMN `is_deleted` tinyint(1) NOT NULL DEFAULT '0' COMMENT '逻辑删除标志';
+
+ALTER TABLE `t_recipe` ADD COLUMN `is_deleted` tinyint(1) NOT NULL DEFAULT '0' COMMENT '逻辑删除标志';
+
+ALTER TABLE `t_user_recipe` ADD COLUMN `is_deleted` tinyint(1) NOT NULL DEFAULT '0' COMMENT '逻辑删除标志';
+
+ALTER TABLE `t_user_recipe_tag` ADD COLUMN `is_deleted` tinyint(1) NOT NULL DEFAULT '0' COMMENT '逻辑删除标志';
+
+ALTER TABLE `t_food` ADD COLUMN `is_deleted` tinyint(1) NOT NULL DEFAULT '0' COMMENT '逻辑删除标志';
+
+ALTER TABLE `t_food_price` ADD COLUMN `is_deleted` tinyint(1) NOT NULL DEFAULT '0' COMMENT '逻辑删除标志';
+
+ALTER TABLE `t_recipe_food` ADD COLUMN `is_deleted` tinyint(1) NOT NULL DEFAULT '0' COMMENT '逻辑删除标志';
+
+ALTER TABLE `t_recipe_cook_tool` ADD COLUMN `is_deleted` tinyint(1) NOT NULL DEFAULT '0' COMMENT '逻辑删除标志';
+
