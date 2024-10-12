@@ -2,11 +2,14 @@ package cn.insectmk.dailyeats.domain.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableLogic;
 import com.baomidou.mybatisplus.annotation.TableName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
+
+import java.io.Serial;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -26,10 +29,11 @@ import java.time.LocalDateTime;
 @Schema(name="FoodPrice对象", description="食材价格表，储存价格信息")
 public class FoodPrice implements Serializable {
 
+    @Serial
     private static final long serialVersionUID = 1L;
 
     @Schema(name = "主键")
-    @TableId(value = "id", type = IdType.AUTO)
+    @TableId(value = "id", type = IdType.ASSIGN_UUID)
     private String id;
 
     @Schema(name = "食材ID")
@@ -44,5 +48,7 @@ public class FoodPrice implements Serializable {
     @Schema(name = "录入时间")
     private LocalDateTime inputDate;
 
-
+    @Schema(name = "逻辑删除标志")
+    @TableLogic
+    private Boolean isDeleted;
 }

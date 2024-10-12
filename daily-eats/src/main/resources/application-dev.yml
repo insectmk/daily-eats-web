@@ -31,3 +31,22 @@ springdoc:
   swagger-ui:
     enabled: true
     path: /swagger-ui.html
+mybatis-plus:
+  configuration:
+    # MyBatis 配置
+    map-underscore-to-camel-case: true
+  global-config:
+    db-config:
+      logic-delete-field: is_deleted # 全局逻辑删除字段名
+      logic-delete-value: 1 # 逻辑已删除值
+      logic-not-delete-value: 0 # 逻辑未删除值
+      id-type: assign_uuid  # 设置全局ID生成策略
+# 日志配置 https://github.com/gavlyukovskiy/spring-boot-data-source-decorator
+decorator:
+  datasource:
+    p6spy:
+      # 日志格式
+      log-format: "\ntime:%(executionTime) || sql:%(sql)\n"
+      # 自定义日志类
+      logging: custom
+      custom-appender-class: cn.insectmk.dailyeats.config.StdoutLogger
