@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @since 2024-10-09
  */
 @RestController
-@RequestMapping("/user-recipe")
+@RequestMapping("/core/user-recipe")
 @Tag(name = "用户菜谱")
 public class UserRecipeController {
 

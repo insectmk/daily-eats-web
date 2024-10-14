@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @since 2024-10-09
  */
 @RestController
-@RequestMapping("/user")
+@RequestMapping("/core/user")
 @Tag(name = "用户")
 public class UserController {
     private final IUserService userService; // 用户服务

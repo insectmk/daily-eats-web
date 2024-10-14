@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @since 2024-10-09
  */
 @RestController
-@RequestMapping("/food-price")
+@RequestMapping("/core/food-price")
 @Tag(name = "食材价格")
 public class FoodPriceController {
 
