@@ -25,9 +25,11 @@ token:
   expireTime: 1800
 # swagger配置
 springdoc:
+  # 文档 JSON API 配置
   api-docs:
     enabled: true
     path: /v3/api-docs
+  # 文档 页面 配置
   swagger-ui:
     enabled: true
     path: /swagger-ui.html
@@ -46,7 +48,20 @@ decorator:
   datasource:
     p6spy:
       # 日志格式
-      log-format: "\ntime:%(executionTime) || sql:%(sql)\n"
+      log-format: "\nSQL执行日志\n执行时间：%(executionTime)\n执行SQL:%(sql)\n"
       # 自定义日志类
       logging: custom
-      custom-appender-class: cn.insectmk.dailyeats.core.config.StdoutLogger
+      custom-appender-class: cn.insectmk.dailyeats.core.config.StdoutLoggerConfig
+#日志配置
+logging:
+  config:  classpath:log4j2.xml
+  level:
+    root: INFO # 设置根日志级别TRACE < DEBUG < INFO < WARN < ERROR
+    javax.activation: info # 设置特定包的日志级别
+    org.apache.catalina: INFO
+    org.apache.commons.beanutils.converters: INFO
+    org.apache.coyote.http11.Http11Processor: INFO
+    org.apache.http: INFO
+    org.apache.tomcat: INFO
+    org.springframework: INFO
+    cn.insectmk.dailyeats: DEBUG # 设置自己的包的日志级别
