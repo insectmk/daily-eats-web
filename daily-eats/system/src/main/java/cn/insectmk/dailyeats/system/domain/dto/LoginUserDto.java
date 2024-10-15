@@ -1,4 +1,4 @@
-package cn.insectmk.dailyeats.core.domain.dto;
+package cn.insectmk.dailyeats.system.domain.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -13,6 +13,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class LoginUser {
+public class LoginUserDto {
     private String username;
+    private String password;
 }

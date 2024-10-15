@@ -1,8 +1,8 @@
-package cn.insectmk.dailyeats.core.service.impl;
+package cn.insectmk.dailyeats.system.service.impl;
 
-import cn.insectmk.dailyeats.core.domain.entity.User;
-import cn.insectmk.dailyeats.core.mapper.UserMapper;
-import cn.insectmk.dailyeats.core.service.IUserService;
+import cn.insectmk.dailyeats.system.domain.entity.User;
+import cn.insectmk.dailyeats.system.mapper.UserMapper;
+import cn.insectmk.dailyeats.system.service.IUserService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 

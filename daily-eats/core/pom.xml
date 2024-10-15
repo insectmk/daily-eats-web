@@ -32,6 +32,12 @@
 	</properties>
 
 	<dependencies>
+		<!-- 架构相关 -->
+		<dependency>
+			<groupId>cn.insectmk.dailyeats</groupId>
+			<artifactId>framework</artifactId>
+			<version>${daily-eats.version}</version>
+		</dependency>
 		<!-- 系统相关 -->
 		<dependency>
 			<groupId>cn.insectmk.dailyeats</groupId>

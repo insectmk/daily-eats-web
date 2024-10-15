@@ -1,7 +1,7 @@
 package cn.insectmk.dailyeats.service.impl;
 
-import cn.insectmk.dailyeats.core.domain.entity.User;
-import cn.insectmk.dailyeats.core.service.IUserService;
+import cn.insectmk.dailyeats.system.domain.entity.User;
+import cn.insectmk.dailyeats.system.service.IUserService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

@@ -1,4 +1,4 @@
-package cn.insectmk.dailyeats.core.config;
+package cn.insectmk.dailyeats.framework.config;
 
 import com.p6spy.engine.spy.appender.StdoutLogger;
 import lombok.extern.slf4j.Slf4j;

@@ -1,6 +1,6 @@
-package cn.insectmk.dailyeats.core.mapper;
+package cn.insectmk.dailyeats.system.mapper;
 
-import cn.insectmk.dailyeats.core.domain.entity.User;
+import cn.insectmk.dailyeats.system.domain.entity.User;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 /**

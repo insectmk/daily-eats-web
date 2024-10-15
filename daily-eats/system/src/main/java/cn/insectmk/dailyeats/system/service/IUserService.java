@@ -1,6 +1,6 @@
-package cn.insectmk.dailyeats.core.service;
+package cn.insectmk.dailyeats.system.service;
 
-import cn.insectmk.dailyeats.core.domain.entity.User;
+import cn.insectmk.dailyeats.system.domain.entity.User;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 /**
