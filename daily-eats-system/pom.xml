@@ -11,7 +11,7 @@
 
     <artifactId>system</artifactId>
     <name>system</name>
-    <description>系统相关</description>
+    <description>系统业务相关（登录注册）</description>
 
     <url/>
     <licenses>
