@@ -33,5 +33,10 @@
 
     <dependencies>
 
+        <dependency>
+            <groupId>cn.insectmk.dailyeats</groupId>
+            <artifactId>common</artifactId>
+            <version>${daily-eats.version}</version>
+        </dependency>
     </dependencies>
 </project>
