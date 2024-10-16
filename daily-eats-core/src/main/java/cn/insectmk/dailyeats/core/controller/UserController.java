@@ -20,12 +20,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/core/user")
 @Tag(name = "用户")
 public class UserController {
-    private final IUserService userService; // 用户服务
-
     @Autowired
-    public UserController(IUserService userService) {
-        this.userService = userService;
-    }
+    private IUserService userService; // 用户服务
 
     /**
      * 获取所有用户信息
