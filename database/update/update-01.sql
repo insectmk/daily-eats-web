@@ -121,3 +121,6 @@ ALTER TABLE `t_recipe_cook_tool` ADD COLUMN `is_deleted` tinyint(1) NOT NULL DEF
 
 -- 用户表 修改字段 头像
 ALTER TABLE `t_user` MODIFY COLUMN `head` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '头像';
+
+-- 用户表 修改字段 用户名
+alter table `t_user` add unique index `uni_user_username` (`username`)
