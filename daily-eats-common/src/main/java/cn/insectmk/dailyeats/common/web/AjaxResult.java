@@ -1,5 +1,8 @@
 package cn.insectmk.dailyeats.common.web;
 
+import cn.insectmk.dailyeats.common.enums.ExceptionCodeEnum;
+import cn.insectmk.dailyeats.common.enums.ResponseCodeEnum;
+
 import java.io.Serial;
 import java.util.HashMap;
 
@@ -23,8 +26,8 @@ public class AjaxResult extends HashMap<String, Object> {
     /**
      * 创建一个空的返回对象
      */
-    public AjaxResult() {
-        put("code", 0);
+    private AjaxResult() {
+        put("code", ResponseCodeEnum.SUCCESS.getCode());
         put("msg", "");
         put("data", null);
     }
@@ -35,10 +38,30 @@ public class AjaxResult extends HashMap<String, Object> {
      * @param msg 返回消息
      * @param data 返回内容
      */
-    public AjaxResult(int code, String msg, Object data) {
+    private AjaxResult(int code, String msg, Object data) {
         put("code", code);
         put("msg", msg);
         put("data", data);
+    }
+
+    /**
+     * 快速创建一个失败返回对象
+     * @param code 错误代码
+     * @param message 消息
+     * @return 处理结果
+     */
+    public static AjaxResult fail(ResponseCodeEnum code, String message) {
+        return new AjaxResult(code.getCode(), message, null);
+    }
+
+    /**
+     * 快速创建一个错误返回对象
+     * @param code 错误代码
+     * @param message 消息
+     * @return 处理结果
+     */
+    public static AjaxResult error(ExceptionCodeEnum code, String message) {
+        return new AjaxResult(code.getCode(), message, null);
     }
 
     /**
@@ -59,7 +82,7 @@ public class AjaxResult extends HashMap<String, Object> {
      * @return 处理结果
      */
     public static AjaxResult success() {
-        return new AjaxResult(0, "success", null);
+        return new AjaxResult(ResponseCodeEnum.SUCCESS.getCode(), "success", null);
     }
 
     /**
@@ -68,7 +91,7 @@ public class AjaxResult extends HashMap<String, Object> {
      * @return 处理结果
      */
     public static AjaxResult success(Object data) {
-        return new AjaxResult(0, "success", data);
+        return new AjaxResult(ResponseCodeEnum.SUCCESS.getCode(), "success", data);
     }
 
     /**
@@ -78,6 +101,6 @@ public class AjaxResult extends HashMap<String, Object> {
      * @return 处理结果
      */
     public static AjaxResult success(String msg, Object data) {
-        return new AjaxResult(0, msg, data);
+        return new AjaxResult(ResponseCodeEnum.SUCCESS.getCode(), msg, data);
     }
 }

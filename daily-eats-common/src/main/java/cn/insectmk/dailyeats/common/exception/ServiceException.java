@@ -1,5 +1,6 @@
 package cn.insectmk.dailyeats.common.exception;
 
+import cn.insectmk.dailyeats.common.enums.ExceptionCodeEnum;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import java.io.Serial;
@@ -17,7 +18,7 @@ public class ServiceException extends RuntimeException {
     private static final long serialVersionUID = 1L;
 
     /** 错误码*/
-    private Integer code;
+    private ExceptionCodeEnum code;
     /** 错误提示*/
     private String message;
 
@@ -39,7 +40,7 @@ public class ServiceException extends RuntimeException {
      * 创建一个带信息与状态码的业务异常
      * @param message 错误信息
      */
-    public ServiceException(String message, Integer code) {
+    public ServiceException(String message, ExceptionCodeEnum code) {
         this.message = message;
         this.code = code;
     }
