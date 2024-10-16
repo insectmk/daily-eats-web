@@ -64,15 +64,6 @@ public class AjaxResult extends HashMap<String, Object> {
 
     /**
      * 快捷返回一个成功对象
-     * @param msg 返回的消息
-     * @return 处理结果
-     */
-    public static AjaxResult success(String msg) {
-        return new AjaxResult(0, msg, null);
-    }
-
-    /**
-     * 快捷返回一个成功对象
      * @param data 返回的数据
      * @return 处理结果
      */
