@@ -39,7 +39,7 @@ public class LoginServiceImpl implements LoginService {
                 .eq(User::getUsername, loginUserDto.getUsername())
                 .eq(User::getPassword, loginUserDto.getPassword()));
         if (loginUser == null) {
-            throw new ServiceException("用户名或密码错误", ExceptionCodeEnum.FAIL_USER.getCode());
+            throw new ServiceException("用户名或密码错误", ExceptionCodeEnum.FAIL_USER);
         }
         // 生成token
         Map<String, Object> claims = new HashMap<>();
