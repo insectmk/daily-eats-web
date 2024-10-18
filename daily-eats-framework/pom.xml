@@ -32,7 +32,13 @@
     </properties>
 
     <dependencies>
-
+        <!-- 系统包 -->
+        <dependency>
+            <groupId>cn.insectmk.dailyeats</groupId>
+            <artifactId>system</artifactId>
+            <version>${daily-eats.version}</version>
+        </dependency>
+        <!-- 通用包 -->
         <dependency>
             <groupId>cn.insectmk.dailyeats</groupId>
             <artifactId>common</artifactId>

@@ -1,6 +1,6 @@
 package cn.insectmk.dailyeats.system.service.impl;
 
-import cn.insectmk.dailyeats.common.enums.ExceptionCodeEnum;
+import cn.insectmk.dailyeats.common.enums.ResponseCodeEnum;
 import cn.insectmk.dailyeats.common.exception.ServiceException;
 import cn.insectmk.dailyeats.system.domain.dto.LoginUserDto;
 import cn.insectmk.dailyeats.system.domain.entity.User;
@@ -39,11 +39,11 @@ public class LoginServiceImpl implements LoginService {
                 .eq(User::getUsername, loginUserDto.getUsername())
                 .eq(User::getPassword, loginUserDto.getPassword()));
         if (loginUser == null) {
-            throw new ServiceException("用户名或密码错误", ExceptionCodeEnum.FAIL_USER);
+            throw new ServiceException(ResponseCodeEnum.FAIL_USER, "用户名或密码错误");
         }
         // 生成token
         Map<String, Object> claims = new HashMap<>();
-        claims.put("userId", loginUser.getId());
+        claims.put("id", loginUser.getId());
         claims.put("username", loginUserDto.getUsername());
         return tokenService.getToken(claims);
     }

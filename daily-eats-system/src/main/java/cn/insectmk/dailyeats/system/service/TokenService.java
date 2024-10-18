@@ -1,9 +1,12 @@
 package cn.insectmk.dailyeats.system.service;
 
+import cn.insectmk.dailyeats.system.domain.entity.User;
+import cn.insectmk.dailyeats.system.mapper.UserMapper;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jws;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import java.time.Instant;
@@ -34,6 +37,22 @@ public class TokenService {
     // 令牌有效期（默认30分钟）
     @Value("${token.expireTime}")
     private int expireTime;
+    @Autowired
+    private UserMapper userMapper;
+
+    /**
+     * 获取令牌用户信息
+     * @param token 令牌
+     * @return 用户信息
+     */
+    public User getUser(String token) {
+        // 解析令牌
+        Jws<Claims> claimsJws = parseToken(token);
+        // 获取令牌中的数据
+        String id = claimsJws.getPayload().get("id", String.class);
+        // 获取用户信息，返回用户信息
+        return userMapper.selectById(id);
+    }
 
     /**
      * 解析令牌
