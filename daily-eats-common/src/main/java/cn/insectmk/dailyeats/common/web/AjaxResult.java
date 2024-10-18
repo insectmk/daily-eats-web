@@ -1,6 +1,5 @@
 package cn.insectmk.dailyeats.common.web;
 
-import cn.insectmk.dailyeats.common.enums.ExceptionCodeEnum;
 import cn.insectmk.dailyeats.common.enums.ResponseCodeEnum;
 
 import java.io.Serial;
@@ -60,7 +59,7 @@ public class AjaxResult extends HashMap<String, Object> {
      * @param message 消息
      * @return 处理结果
      */
-    public static AjaxResult error(ExceptionCodeEnum code, String message) {
+    public static AjaxResult error(ResponseCodeEnum code, String message) {
         return new AjaxResult(code.getCode(), message, null);
     }
 

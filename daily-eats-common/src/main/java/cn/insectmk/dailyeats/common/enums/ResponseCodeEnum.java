@@ -10,7 +10,10 @@ import lombok.Getter;
  */
 @Getter
 public enum ResponseCodeEnum {
-    SUCCESS(0, "成功"),
+    SUCCESS(200, "成功"),
+    FAIL_USER(400, "用户输入错误"),
+    USER_NOT_LOGIN(401, "用户未登录"),
+    SYSTEM_ERROR(500, "系统错误"),
     ;
 
     /** 状态码*/
