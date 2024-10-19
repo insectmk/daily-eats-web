@@ -14,6 +14,7 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.security.web.authentication.logout.LogoutFilter;
+import org.springframework.web.filter.CorsFilter;
 
 /**
  * @Description Spring Security配置
@@ -27,6 +28,9 @@ public class SecurityConfig {
     /** token认证过滤器*/
     //@Autowired
     private JwtAuthenticationTokenFilter authenticationTokenFilter;
+    /** 跨域过滤器*/
+    @Autowired
+    private CorsFilter corsFilter;
 
     /**
      * anyRequest          |   匹配所有请求路径
@@ -71,6 +75,7 @@ public class SecurityConfig {
                 // 添加CORS filter
                 //.addFilterBefore(corsFilter, JwtAuthenticationTokenFilter.class)
                 //.addFilterBefore(corsFilter, LogoutFilter.class)
+                .addFilterBefore(corsFilter, UsernamePasswordAuthenticationFilter.class)
                 .build();
     }
 }
