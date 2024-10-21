@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @Version 1.0
  */
 @RestController
-@RequestMapping("/system/login")
+@RequestMapping("/login")
 @Tag(name = "登录控制")
 public class LoginController {
     @Autowired

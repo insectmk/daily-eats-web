@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @since 2024-10-09
  */
 @RestController
-@RequestMapping("/core/recipe-cook-tool")
+@RequestMapping("/recipe-cook-tool")
 @Tag(name = "菜谱烹饪工具")
 public class RecipeCookToolController {
 

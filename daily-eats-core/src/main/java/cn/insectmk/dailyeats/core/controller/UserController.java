@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @since 2024-10-09
  */
 @RestController
-@RequestMapping("/core/user")
+@RequestMapping("/user")
 @Tag(name = "用户")
 public class UserController {
     @Autowired
