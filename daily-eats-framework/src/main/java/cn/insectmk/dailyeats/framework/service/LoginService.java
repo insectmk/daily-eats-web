@@ -1,4 +1,4 @@
-package cn.insectmk.dailyeats.system.service;
+package cn.insectmk.dailyeats.framework.service;
 
 import cn.insectmk.dailyeats.system.domain.dto.LoginUserDto;
 

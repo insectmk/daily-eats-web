@@ -9,10 +9,8 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 import java.io.IOException;
 
@@ -22,18 +20,22 @@ import java.io.IOException;
  * @Date 2024/10/16 20:14
  * @Version 1.0
  */
-//@Component
 public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {
-    // 请求头Token存放位置
-    @Value("${token.header}")
-    private String subject;
-    @Autowired
+    /** JWT令牌服务*/
     private TokenService tokenService;
+
+    public JwtAuthenticationTokenFilter(TokenService tokenService) {
+        this.tokenService = tokenService;
+    }
+
+    public JwtAuthenticationTokenFilter() {
+    }
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
         // 从请求头中获取Token
-        String jwtToken = request.getHeader(subject);
+        System.err.println("马某测试测试测试");
+        /*String jwtToken = request.getHeader("Authorization");
         SysUser sysUser = null;
         try {
             sysUser = new SysUser(tokenService.getUser(jwtToken));
@@ -43,7 +45,7 @@ public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {
         // 存入SecurityContextHolder
         // TODO 待理解 2024/10/16 20:24
         UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(sysUser, null, sysUser.getAuthorities());
-        SecurityContextHolder.getContext().setAuthentication(authenticationToken);
+        SecurityContextHolder.getContext().setAuthentication(authenticationToken);*/
         // 放行
         filterChain.doFilter(request, response);
     }

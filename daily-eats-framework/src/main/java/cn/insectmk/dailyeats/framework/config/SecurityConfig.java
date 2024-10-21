@@ -1,19 +1,19 @@
 package cn.insectmk.dailyeats.framework.config;
 
 import cn.insectmk.dailyeats.framework.security.filter.JwtAuthenticationTokenFilter;
+import cn.insectmk.dailyeats.system.service.TokenService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.HttpMethod;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.ProviderManager;
+import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
-import org.springframework.security.config.annotation.web.configurers.HeadersConfigurer;
-import org.springframework.security.config.annotation.web.configurers.LogoutConfigurer;
-import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-import org.springframework.security.web.authentication.logout.LogoutFilter;
 import org.springframework.web.filter.CorsFilter;
 
 /**
@@ -25,12 +25,33 @@ import org.springframework.web.filter.CorsFilter;
 @EnableWebSecurity
 @Configuration
 public class SecurityConfig {
-    /** token认证过滤器*/
-    //@Autowired
-    private JwtAuthenticationTokenFilter authenticationTokenFilter;
+    @Autowired
+    private TokenService tokenService;
+    @Autowired
+    private UserDetailsService userDetailsService;
+
     /** 跨域过滤器*/
     @Autowired
     private CorsFilter corsFilter;
+
+    /**
+     * 强散列哈希加密实现
+     */
+    @Bean
+    public BCryptPasswordEncoder bCryptPasswordEncoder() {
+        return new BCryptPasswordEncoder(); // TODO 待理解 2024/10/16 19:26
+    }
+
+    /**
+     * 身份验证实现
+     */
+    @Bean
+    public AuthenticationManager authenticationManager() {
+        DaoAuthenticationProvider daoAuthenticationProvider = new DaoAuthenticationProvider();
+        daoAuthenticationProvider.setUserDetailsService(userDetailsService);
+        daoAuthenticationProvider.setPasswordEncoder(bCryptPasswordEncoder());
+        return new ProviderManager(daoAuthenticationProvider); // TODO 待理解 2024/10/16 19:26
+    }
 
     /**
      * anyRequest          |   匹配所有请求路径
@@ -51,31 +72,42 @@ public class SecurityConfig {
     protected SecurityFilterChain filterChain(HttpSecurity http) throws Exception
     {
         return http
-                // CSRF禁用，因为不使用session
+                /*// CSRF禁用，因为不使用session
                 .csrf(AbstractHttpConfigurer::disable)
                 // 禁用HTTP响应标头
                 .headers((headersCustomizer) -> {
                     headersCustomizer.cacheControl(HeadersConfigurer.CacheControlConfig::disable).frameOptions(HeadersConfigurer.FrameOptionsConfig::sameOrigin);
-                })
+                })*/
                 // 认证失败处理类
                 //.exceptionHandling(exception -> exception.authenticationEntryPoint(unauthorizedHandler))
                 // 基于token，所以不需要session
-                .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+               /* .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))*/
                 // 注解标记允许匿名访问的url
                 .authorizeHttpRequests((requests) -> {
                     // 对于登录login 注册register 验证码captchaImage 允许匿名访问
-                    requests.requestMatchers("/core/user/getAll", "/system/login/action").anonymous()
+                    requests.requestMatchers( "/system/login/action",
+                                    "/core/user/getAll").anonymous()
+                            .requestMatchers("/system/login/action",
+                                    "/core/user/getAll").permitAll()
                             // 除上面外的所有请求全部需要鉴权认证
                             .anyRequest().authenticated();
                 })
                 // 添加Logout filter
                 //.logout(logout -> logout.logoutUrl("/logout").logoutSuccessHandler(logoutSuccessHandler))
                 // 添加JWT filter
-                //.addFilterBefore(authenticationTokenFilter, UsernamePasswordAuthenticationFilter.class)
+                .addFilterAfter(authenticationTokenFilter(), UsernamePasswordAuthenticationFilter.class)
                 // 添加CORS filter
                 //.addFilterBefore(corsFilter, JwtAuthenticationTokenFilter.class)
                 //.addFilterBefore(corsFilter, LogoutFilter.class)
                 .addFilterBefore(corsFilter, UsernamePasswordAuthenticationFilter.class)
                 .build();
+    }
+
+    /**
+     * 获取token认证过滤器
+     * @return token认证过滤器
+     */
+    private JwtAuthenticationTokenFilter authenticationTokenFilter() {
+        return new JwtAuthenticationTokenFilter(tokenService);
     }
 }

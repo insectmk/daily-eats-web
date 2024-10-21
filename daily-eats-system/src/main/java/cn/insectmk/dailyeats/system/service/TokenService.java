@@ -28,9 +28,6 @@ public class TokenService {
     // 签发者
     @Value("${token.issuer}")
     private String issuer;
-    // 令牌自定义标识
-    @Value("${token.header}")
-    private String header;
     // 令牌秘钥
     @Value("${token.secret}")
     private String secret;

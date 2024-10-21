@@ -1,4 +1,4 @@
-package cn.insectmk.dailyeats.framework.service;
+package cn.insectmk.dailyeats.framework.service.impl;
 
 import cn.insectmk.dailyeats.common.exception.ServiceException;
 import cn.insectmk.dailyeats.framework.domain.model.SysUser;

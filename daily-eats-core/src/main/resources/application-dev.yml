@@ -17,8 +17,6 @@ token:
   subject: daily_eats
   # 签发者
   issuer: daily_eats
-  # 令牌自定义标识
-  header: Authorization
   # 令牌密钥
   secret: abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz
   # 令牌有效期 s（默认30分钟）
