@@ -1,16 +1,13 @@
 package cn.insectmk.dailyeats.framework.service.impl;
 
-import cn.insectmk.dailyeats.framework.domain.model.SysUser;
-import cn.insectmk.dailyeats.framework.security.context.AuthenticationContextHolder;
+import cn.insectmk.dailyeats.common.exception.ServiceException;
 import cn.insectmk.dailyeats.framework.service.LoginService;
 import cn.insectmk.dailyeats.system.domain.dto.LoginUserDto;
-import cn.insectmk.dailyeats.system.service.IUserService;
+import cn.insectmk.dailyeats.system.domain.entity.User;
+import cn.insectmk.dailyeats.system.mapper.UserMapper;
 import cn.insectmk.dailyeats.system.service.TokenService;
-import jakarta.annotation.Resource;
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
 import java.util.HashMap;
 import java.util.Map;
@@ -26,8 +23,8 @@ public class LoginServiceImpl implements LoginService {
     /** 用于生成JWT令牌*/
     @Autowired
     private TokenService tokenService;
-    @Resource
-    private AuthenticationManager authenticationManager;
+    @Autowired
+    private UserMapper userMapper;
 
     /**
      * 用户登录
@@ -36,23 +33,16 @@ public class LoginServiceImpl implements LoginService {
      */
     @Override
     public String login(LoginUserDto loginUserDto) {
-        // 用户验证
-        Authentication authentication = null;
-        try
-        {
-            UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(loginUserDto.getUsername(), loginUserDto.getPassword());
-            AuthenticationContextHolder.setContext(authenticationToken);
-            // 该方法会去调用UserDetailsServiceImpl.loadUserByUsername
-            authentication = authenticationManager.authenticate(authenticationToken);
-        } finally
-        {
-            AuthenticationContextHolder.clearContext();
+        User user = userMapper.selectOne(new LambdaQueryWrapper<User>()
+               .eq(User::getUsername, loginUserDto.getUsername())
+                .eq(User::getPassword, loginUserDto.getPassword()));
+        if (user == null) {
+            throw new ServiceException("用户名或密码错误");
         }
-        SysUser loginUser = (SysUser) authentication.getPrincipal();
         // 生成token
         Map<String, Object> claims = new HashMap<>();
-        claims.put("id", loginUser.getUser().getId());
-        claims.put("username", loginUser.getUser().getUsername());
+        claims.put("id", user.getId());
+        claims.put("username", user.getUsername());
         return tokenService.getToken(claims);
     }
 }
