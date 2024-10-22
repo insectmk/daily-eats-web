@@ -1,5 +1,6 @@
 package cn.insectmk.dailyeats.core.controller;
 
+import cn.insectmk.dailyeats.common.web.AjaxResult;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -14,4 +15,13 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/test")
 @Tag(name = "测试")
 public class TestController {
+    @RequestMapping("/hello")
+    public AjaxResult hello() {
+        return AjaxResult.success("你好，每日饭菜！！！");
+    }
+
+    @RequestMapping("/bye")
+    public AjaxResult bye() {
+        return AjaxResult.success("再见，每日饭菜！！！");
+    }
 }
