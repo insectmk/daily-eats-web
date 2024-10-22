@@ -40,6 +40,6 @@ public class LogoutSuccessHandlerImpl implements LogoutSuccessHandler
         response.setStatus(200);
         response.setContentType("application/json");
         response.setCharacterEncoding("utf-8");
-        response.getWriter().print(objectMapper.writeValueAsString(AjaxResult.success("认证失败，无法访问系统资源！", null)));
+        response.getWriter().print(objectMapper.writeValueAsString(AjaxResult.success("退出登录成功！", null)));
     }
 }

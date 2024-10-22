@@ -1,5 +1,6 @@
 package cn.insectmk.dailyeats.framework.security.handle;
 
+import cn.insectmk.dailyeats.common.constant.ResponseCode;
 import cn.insectmk.dailyeats.common.web.AjaxResult;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.servlet.http.HttpServletRequest;
@@ -30,6 +31,6 @@ public class AuthenticationEntryPointImpl implements AuthenticationEntryPoint, S
         response.setStatus(200);
         response.setContentType("application/json");
         response.setCharacterEncoding("utf-8");
-        response.getWriter().print(objectMapper.writeValueAsString(AjaxResult.success("退出登录成功！", null)));
+        response.getWriter().print(objectMapper.writeValueAsString(new AjaxResult(ResponseCode.UNAUTHORIZED, "认证失败，无法访问系统资源！", null)));
     }
 }

@@ -24,7 +24,7 @@ public class AjaxResult extends HashMap<String, Object> {
     /**
      * 创建一个空的返回对象
      */
-    private AjaxResult() {
+    public AjaxResult() {
         put("code", ResponseCode.SUCCESS);
         put("msg", "");
         put("data", null);
@@ -36,7 +36,7 @@ public class AjaxResult extends HashMap<String, Object> {
      * @param msg 返回消息
      * @param data 返回内容
      */
-    private AjaxResult(int code, String msg, Object data) {
+    public AjaxResult(int code, String msg, Object data) {
         put("code", code);
         put("msg", msg);
         put("data", data);
