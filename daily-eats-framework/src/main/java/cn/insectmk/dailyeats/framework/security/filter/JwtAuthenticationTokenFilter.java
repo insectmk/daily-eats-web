@@ -1,6 +1,6 @@
 package cn.insectmk.dailyeats.framework.security.filter;
 
-import cn.insectmk.dailyeats.common.enums.ResponseCodeEnum;
+import cn.insectmk.dailyeats.common.constant.ResponseCode;
 import cn.insectmk.dailyeats.common.exception.ServiceException;
 import cn.insectmk.dailyeats.framework.domain.model.SysUser;
 import cn.insectmk.dailyeats.system.service.TokenService;
@@ -40,7 +40,7 @@ public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {
         try {
             sysUser = new SysUser(tokenService.getUser(jwtToken));
         } catch (Exception e) {
-            throw new ServiceException(ResponseCodeEnum.USER_NOT_LOGIN, "登录状态失效");
+            throw new ServiceException(ResponseCode.UNAUTHORIZED, "登录状态失效");
         }
         // 存入SecurityContextHolder
         // TODO 待理解 2024/10/16 20:24

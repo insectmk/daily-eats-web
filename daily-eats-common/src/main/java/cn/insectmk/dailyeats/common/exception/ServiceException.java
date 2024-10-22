@@ -1,6 +1,6 @@
 package cn.insectmk.dailyeats.common.exception;
 
-import cn.insectmk.dailyeats.common.enums.ResponseCodeEnum;
+import cn.insectmk.dailyeats.common.constant.ResponseCode;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import java.io.Serial;
@@ -18,7 +18,7 @@ public class ServiceException extends RuntimeException {
     private static final long serialVersionUID = 1L;
 
     /** 错误码*/
-    private ResponseCodeEnum code;
+    private int code;
     /** 错误提示*/
     private String message;
 
@@ -34,14 +34,14 @@ public class ServiceException extends RuntimeException {
      */
     public ServiceException(String message)
     {
-        this.code = ResponseCodeEnum.SYSTEM_ERROR;
+        this.code = ResponseCode.NOT_FOUND;
         this.message = message;
     }
     /**
      * 创建一个带信息与状态码的业务异常
      * @param message 错误信息
      */
-    public ServiceException(ResponseCodeEnum code, String message) {
+    public ServiceException(int code, String message) {
         this.code = code;
         this.message = message;
     }

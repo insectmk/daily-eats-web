@@ -1,7 +1,6 @@
 package cn.insectmk.dailyeats.common.web;
 
-import cn.insectmk.dailyeats.common.enums.ResponseCodeEnum;
-
+import cn.insectmk.dailyeats.common.constant.ResponseCode;
 import java.io.Serial;
 import java.util.HashMap;
 
@@ -26,7 +25,7 @@ public class AjaxResult extends HashMap<String, Object> {
      * 创建一个空的返回对象
      */
     private AjaxResult() {
-        put("code", ResponseCodeEnum.SUCCESS.getCode());
+        put("code", ResponseCode.SUCCESS);
         put("msg", "");
         put("data", null);
     }
@@ -49,8 +48,8 @@ public class AjaxResult extends HashMap<String, Object> {
      * @param message 消息
      * @return 处理结果
      */
-    public static AjaxResult fail(ResponseCodeEnum code, String message) {
-        return new AjaxResult(code.getCode(), message, null);
+    public static AjaxResult fail(int code, String message) {
+        return new AjaxResult(code, message, null);
     }
 
     /**
@@ -59,8 +58,8 @@ public class AjaxResult extends HashMap<String, Object> {
      * @param message 消息
      * @return 处理结果
      */
-    public static AjaxResult error(ResponseCodeEnum code, String message) {
-        return new AjaxResult(code.getCode(), message, null);
+    public static AjaxResult error(int code, String message) {
+        return new AjaxResult(code, message, null);
     }
 
     /**
@@ -81,7 +80,7 @@ public class AjaxResult extends HashMap<String, Object> {
      * @return 处理结果
      */
     public static AjaxResult success() {
-        return new AjaxResult(ResponseCodeEnum.SUCCESS.getCode(), "success", null);
+        return new AjaxResult(ResponseCode.SUCCESS, "success", null);
     }
 
     /**
@@ -90,7 +89,7 @@ public class AjaxResult extends HashMap<String, Object> {
      * @return 处理结果
      */
     public static AjaxResult success(Object data) {
-        return new AjaxResult(ResponseCodeEnum.SUCCESS.getCode(), "success", data);
+        return new AjaxResult(ResponseCode.SUCCESS, "success", data);
     }
 
     /**
@@ -100,6 +99,6 @@ public class AjaxResult extends HashMap<String, Object> {
      * @return 处理结果
      */
     public static AjaxResult success(String msg, Object data) {
-        return new AjaxResult(ResponseCodeEnum.SUCCESS.getCode(), msg, data);
+        return new AjaxResult(ResponseCode.SUCCESS, msg, data);
     }
 }
