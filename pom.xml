@@ -41,14 +41,6 @@
     </properties>
 
     <dependencies>
-        <!-- SpringSecurity权限校验 -->
-        <dependency>
-            <groupId>org.springframework.security</groupId>
-            <artifactId>spring-security-bom</artifactId>
-            <version>${spring-security.version}</version>
-            <type>pom</type>
-            <scope>import</scope>
-        </dependency>
         <!-- 引入log4j2依赖 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
