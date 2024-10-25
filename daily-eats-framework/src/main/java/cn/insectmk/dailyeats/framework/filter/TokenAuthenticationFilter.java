@@ -33,7 +33,12 @@ public class TokenAuthenticationFilter extends OncePerRequestFilter {
             throws ServletException, IOException {
         String token = request.getHeader("Authorization"); // 从请求头中获取token
         if (token != null && !token.isEmpty()) {
-            Jws<Claims> claimsJws = tokenService.parseToken(token);
+            Jws<Claims> claimsJws = null;
+            try {
+                claimsJws = tokenService.parseToken(token);
+            } catch (Exception e) {
+                throw new ServiceException(ResponseCode.UNAUTHORIZED, "令牌无效");
+            }
             if (claimsJws != null) {
                 // 从token中获取用户信息，将用户信息放入请求头中
                 request.setAttribute("userId", claimsJws.getPayload().get("id"));
