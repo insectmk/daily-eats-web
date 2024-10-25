@@ -20,7 +20,7 @@ IF EXISTS (SELECT 1 FROM information_schema.columns WHERE table_name = 't_user' 
 END IF;
 
 -- 用户表 用户名 唯一索引
-IF NOT EXISTS (SELECT * FROM information_schema.statistics WHERE table_name = 't_user' AND index_name = 'uni_user_username') THEN  
+IF NOT EXISTS (SELECT 1 FROM information_schema.statistics WHERE table_name = 't_user' AND index_name = 'uni_user_username') THEN
    alter table `t_user` add unique index `uni_user_username` (`username`);
 END IF;
 
