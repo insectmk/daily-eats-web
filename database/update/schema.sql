@@ -15,7 +15,7 @@ IF not EXISTS (SELECT 1 FROM information_schema.columns WHERE table_schema = DAT
 END IF;
 
 -- 用户表 修改字段 头像
-IF EXISTS (SELECT 1 FROM information_schema.columns WHERE table_schema = DATABASE() and table_name = 't_user' and column_name = 'head' and character_maximum_length = 20) THEN
+IF EXISTS (SELECT 1 FROM information_schema.columns WHERE table_schema = DATABASE() and table_name = 't_user' and column_name = 'head' and character_maximum_length = 32) THEN
   ALTER TABLE `t_user` MODIFY COLUMN `head` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '头像';
 END IF;
 
