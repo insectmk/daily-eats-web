@@ -12,11 +12,11 @@
 
     <packaging>pom</packaging>
 
-    <groupId>cn.insectmk.dailyeats</groupId>
-    <artifactId>master</artifactId>
+    <groupId>cn.insectmk</groupId>
+    <artifactId>dailyeats</artifactId>
     <version>0.0.1</version>
-    <name>master</name>
-    <description>每日饭菜-根项目</description>
+    <name>dailyeats</name>
+    <description>每日饭菜-规划你的一日三餐</description>
 
     <url/>
     <licenses>
@@ -37,7 +37,6 @@
         <java.version>17</java.version>
         <jwt.version>0.12.6</jwt.version>
         <springdoc-openapi.version>2.6.0</springdoc-openapi.version>
-        <spring-security.version>5.7.12</spring-security.version>
     </properties>
 
     <dependencies>
