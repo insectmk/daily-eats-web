@@ -55,24 +55,19 @@ public class Menu implements Serializable {
     @TableField("sort")
     private Integer sort;
 
-    @Schema(name = "创建者")
-    @TableField("create_by")
-    private String createBy;
+    @Schema(name = "录入人")
+    private String inputBy;
 
-    @Schema(name = "创建时间")
-    @TableField("create_time")
-    private LocalDateTime createTime;
+    @Schema(name = "录入时间")
+    private LocalDateTime inputTime;
 
-    @Schema(name = "更新者")
-    @TableField("update_by")
-    private String updateBy;
+    @Schema(name = "修改人")
+    private String modifyBy;
 
-    @Schema(name = "更新时间")
-    @TableField("update_time")
-    private LocalDateTime updateTime;
+    @Schema(name = "修改时间")
+    private LocalDateTime modifyTime;
 
     @Schema(name = "备注")
-    @TableField("memo")
     private String memo;
 
     @Schema(name = "逻辑删除标志")
