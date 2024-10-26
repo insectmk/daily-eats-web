@@ -1,13 +1,11 @@
-package cn.insectmk.dailyeats.core.controller;
+package cn.insectmk.dailyeats.core.controller.system;
 
 import cn.insectmk.dailyeats.common.web.AjaxResult;
+import cn.insectmk.dailyeats.system.domain.entity.User;
 import cn.insectmk.dailyeats.system.service.IUserService;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * <p>
@@ -23,6 +21,17 @@ import org.springframework.web.bind.annotation.RestController;
 public class UserController {
     @Autowired
     private IUserService userService; // 用户服务
+
+    /**
+     * 插入一个用户
+     * @param user 用户信息
+     * @return 处理结果
+     */
+    @GetMapping("/add")
+    public AjaxResult add(@RequestBody User user) {
+        userService.save(user);
+        return AjaxResult.success();
+    }
 
     /**
      * 获取当前用户信息
