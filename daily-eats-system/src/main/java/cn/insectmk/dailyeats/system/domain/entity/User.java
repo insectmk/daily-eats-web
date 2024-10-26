@@ -60,11 +60,20 @@ public class User implements Serializable {
     @Schema(name = "性别")
     private String gender;
 
+    @Schema(name = "录入人")
+    private String inputBy;
+
     @Schema(name = "录入时间")
-    private LocalDateTime inputDate;
+    private LocalDateTime inputTime;
+
+    @Schema(name = "修改人")
+    private String modifyBy;
 
     @Schema(name = "修改时间")
-    private LocalDateTime modifyDate;
+    private LocalDateTime modifyTime;
+
+    @Schema(name = "备注")
+    private String memo;
 
     @Schema(name = "逻辑删除标志")
     @TableLogic
