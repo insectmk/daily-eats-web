@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="cn.insectmk.dailyeats.core.mapper.UserRecipeTagMapper">
+<mapper namespace="cn.insectmk.dailyeats.mapper.UserRecipeTagMapper">
 
     <!-- 通用查询映射结果 -->
-    <resultMap id="BaseResultMap" type="cn.insectmk.dailyeats.core.domain.entity.UserRecipeTag">
+    <resultMap id="BaseResultMap" type="cn.insectmk.dailyeats.domain.entity.UserRecipeTag">
         <id column="id" property="id" />
         <result column="user_id" property="userId" />
         <result column="recipe_id" property="recipeId" />

@@ -32,23 +32,6 @@
 	</properties>
 
 	<dependencies>
-		<!-- 架构相关 -->
-		<dependency>
-			<groupId>cn.insectmk.dailyeats</groupId>
-			<artifactId>framework</artifactId>
-			<version>${daily-eats.version}</version>
-		</dependency>
-		<!-- 系统相关 -->
-		<dependency>
-			<groupId>cn.insectmk.dailyeats</groupId>
-			<artifactId>system</artifactId>
-			<version>${daily-eats.version}</version>
-		</dependency>
-		<!-- 通用工具包 -->
-		<dependency>
-			<groupId>cn.insectmk.dailyeats</groupId>
-			<artifactId>common</artifactId>
-			<version>${daily-eats.version}</version>
-		</dependency>
+
 	</dependencies>
 </project>

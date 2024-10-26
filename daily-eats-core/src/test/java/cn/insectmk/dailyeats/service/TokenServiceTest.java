@@ -1,6 +1,5 @@
 package cn.insectmk.dailyeats.service;
 
-import cn.insectmk.dailyeats.system.service.TokenService;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jws;
 import org.junit.jupiter.api.Test;
