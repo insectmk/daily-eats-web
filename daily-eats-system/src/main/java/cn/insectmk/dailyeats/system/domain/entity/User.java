@@ -1,9 +1,6 @@
 package cn.insectmk.dailyeats.system.domain.entity;
 
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableId;
-import com.baomidou.mybatisplus.annotation.TableLogic;
-import com.baomidou.mybatisplus.annotation.TableName;
+import com.baomidou.mybatisplus.annotation.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -60,17 +57,21 @@ public class User implements Serializable {
     @Schema(name = "性别")
     private String gender;
 
-    @Schema(name = "录入人")
-    private String inputBy;
+    @Schema(name = "创建者")
+    @TableField(fill = FieldFill.INSERT)
+    private String createBy;
 
-    @Schema(name = "录入时间")
-    private LocalDateTime inputTime;
+    @Schema(name = "创建时间")
+    @TableField(fill = FieldFill.INSERT)
+    private LocalDateTime createTime;
 
-    @Schema(name = "修改人")
-    private String modifyBy;
+    @Schema(name = "更新者")
+    @TableField(fill = FieldFill.UPDATE)
+    private String updateBy;
 
-    @Schema(name = "修改时间")
-    private LocalDateTime modifyTime;
+    @Schema(name = "更新时间")
+    @TableField(fill = FieldFill.UPDATE)
+    private LocalDateTime updateTime;
 
     @Schema(name = "备注")
     private String memo;
