@@ -1,7 +1,7 @@
 package cn.insectmk.dailyeats.controller.system;
 
 
-import cn.insectmk.common.web.AjaxResult;
+import cn.insectmk.dailyeats.common.web.AjaxResult;
 import cn.insectmk.dailyeats.service.IMenuService;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;

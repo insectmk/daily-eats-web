@@ -1,6 +1,6 @@
 package cn.insectmk.dailyeats.controller;
 
-import cn.insectmk.common.web.AjaxResult;
+import cn.insectmk.dailyeats.common.web.AjaxResult;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;

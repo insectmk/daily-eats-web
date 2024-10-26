@@ -1,6 +1,6 @@
 package cn.insectmk.dailyeats.controller;
 
-import cn.insectmk.common.web.AjaxResult;
+import cn.insectmk.dailyeats.common.web.AjaxResult;
 import cn.insectmk.dailyeats.domain.dto.LoginUserDto;
 import cn.insectmk.dailyeats.service.LoginService;
 import io.swagger.v3.oas.annotations.tags.Tag;

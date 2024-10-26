@@ -1,6 +1,6 @@
 package cn.insectmk.dailyeats.common.web;
 
-import cn.insectmk.common.constant.ResponseCode;
+import cn.insectmk.dailyeats.common.constant.ResponseCode;
 import java.io.Serial;
 import java.util.HashMap;
 

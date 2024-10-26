@@ -1,6 +1,6 @@
 package cn.insectmk.dailyeats.service.impl;
 
-import cn.insectmk.common.exception.ServiceException;
+import cn.insectmk.dailyeats.common.exception.ServiceException;
 import cn.insectmk.dailyeats.domain.dto.LoginUserDto;
 import cn.insectmk.dailyeats.domain.entity.User;
 import cn.insectmk.dailyeats.mapper.UserMapper;
