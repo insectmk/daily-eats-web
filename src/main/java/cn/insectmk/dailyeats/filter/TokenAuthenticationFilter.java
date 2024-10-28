@@ -10,11 +10,11 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
-
 import java.io.IOException;
 
-// TODO 开发期间暂时不开启拦截 @Component
+@Component
 public class TokenAuthenticationFilter extends OncePerRequestFilter {
     @Autowired
     private TokenService tokenService;

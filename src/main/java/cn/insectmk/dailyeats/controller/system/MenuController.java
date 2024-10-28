@@ -5,6 +5,7 @@ import cn.insectmk.dailyeats.common.web.AjaxResult;
 import cn.insectmk.dailyeats.service.IMenuService;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -22,6 +23,15 @@ import org.springframework.web.bind.annotation.RestController;
 public class MenuController {
     @Autowired
     private IMenuService menuService;
+
+    /**
+     * 获取当前用户的菜单
+     * @return 结果
+     */
+    @RequestMapping("/getUserMenuTree")
+    public AjaxResult getUserMenuTree(@RequestAttribute("userId") String userId) {
+        return AjaxResult.success(menuService.getUserMenuTree(userId));
+    }
 
     /**
      * 获取所有的菜单
