@@ -49,7 +49,7 @@ decorator:
       log-format: "\nSQL执行日志\n执行时间：%(executionTime)\n执行SQL：%(sql)\n"
       # 自定义日志类
       logging: custom
-      custom-appender-class: cn.insectmk.dailyeats.framework.config.StdoutLoggerConfig
+      custom-appender-class: cn.insectmk.dailyeats.config.StdoutLoggerConfig
 #日志配置
 logging:
   config:  classpath:log4j2.xml
