@@ -10,6 +10,7 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpMethod;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 import java.io.IOException;
@@ -60,8 +61,11 @@ public class TokenAuthenticationFilter extends OncePerRequestFilter {
     protected boolean shouldNotFilter(HttpServletRequest request) throws ServletException {
         // 获取请求的URI
         String path = request.getRequestURI();
+        // 获取请求方法
+        String method = request.getMethod();
         // 定义要排除的URL路径
-        return path.startsWith("/login/action")
-                || path.equals("/test/hello");
+        return path.startsWith("/login/action") // 路径
+                || path.equals("/test/hello")  // 方法
+                || method.equals(HttpMethod.OPTIONS.name());
     }
 }
