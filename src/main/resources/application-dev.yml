@@ -19,8 +19,8 @@ token:
   issuer: daily_eats
   # 令牌密钥
   secret: abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz
-  # 令牌有效期 s（默认30分钟）
-  expireTime: 1800
+  # 令牌有效期：单位（秒）
+  expireTime: 31536000
 # swagger配置
 springdoc:
   # 文档 JSON API 配置
