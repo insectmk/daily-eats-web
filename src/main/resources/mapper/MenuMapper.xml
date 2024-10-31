@@ -42,6 +42,7 @@
         where t_menu.is_deleted = 0
             and t_user_role.user_id = #{userId}
             and t_menu.parent_id is null
+        order by t_menu.sort
     </select>
 
     <!-- 根据父菜单ID查询树形结构菜单 -->
@@ -50,5 +51,6 @@
         from t_menu
         where is_deleted = 0
             and parent_id = #{parentId}
+        order by t_menu.sort
     </select>
 </mapper>
