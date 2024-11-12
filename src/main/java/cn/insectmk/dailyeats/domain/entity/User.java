@@ -1,6 +1,7 @@
 package cn.insectmk.dailyeats.domain.entity;
 
 import com.baomidou.mybatisplus.annotation.*;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -46,6 +47,7 @@ public class User implements Serializable {
     private String head;
 
     @Schema(name = "出生年月日")
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private LocalDate birthday;
 
     @Schema(name = "身高")
@@ -63,6 +65,7 @@ public class User implements Serializable {
 
     @Schema(name = "创建时间")
     @TableField(fill = FieldFill.INSERT)
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime createTime;
 
     @Schema(name = "更新者")
@@ -71,6 +74,7 @@ public class User implements Serializable {
 
     @Schema(name = "更新时间")
     @TableField(fill = FieldFill.UPDATE)
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime updateTime;
 
     @Schema(name = "备注")
