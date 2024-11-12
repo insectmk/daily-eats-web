@@ -1,8 +1,10 @@
 package cn.insectmk.dailyeats.controller.system;
 
 import cn.insectmk.dailyeats.common.web.AjaxResult;
+import cn.insectmk.dailyeats.domain.dto.PageInfo;
 import cn.insectmk.dailyeats.domain.entity.User;
 import cn.insectmk.dailyeats.service.IUserService;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -21,6 +23,17 @@ import org.springframework.web.bind.annotation.*;
 public class UserController {
     @Autowired
     private IUserService userService; // 用户服务
+
+    /**
+     * 分页获取用户信息
+     * @return 处理结果
+     */
+    @GetMapping("/getUserPage")
+    public AjaxResult getUserPage(PageInfo pageInfo){
+        return AjaxResult.success(userService.page(
+                new Page<>(pageInfo.getCurrentPage(),
+                        pageInfo.getPageSize())));
+    }
 
     /**
      * 插入一个用户
